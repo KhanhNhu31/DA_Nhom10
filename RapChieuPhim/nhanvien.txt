@@ -1,0 +1,7 @@
+1
+MaNV: admin
+HoTen: Quan tri vien
+SoDT: 0123456789
+ViTri: 1
+MatKhau: 3110
+-----------------------------

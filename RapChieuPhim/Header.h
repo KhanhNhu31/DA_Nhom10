@@ -38,10 +38,10 @@ struct Phim {
     string maPhim;
     string tenPhim;
     string theLoai;
-    int thoiLuong;
+    int thoiLuong=0;
 };
 
-//cấu trúc suất chiêu
+//cấu trúc suất chiếu
 struct SuatChieu {
     string maSuat;
     string maPhim;
@@ -49,7 +49,7 @@ struct SuatChieu {
     string ngayChieu;
     string gioChieu;
     string phongChieu; 
-    int soGheTrong;
+    int soGheTrong=0;
     bool trangThaiGhe[SO_HANG][SO_COT]; //false=trống, true=đã đặt
 };
 
@@ -62,8 +62,8 @@ struct Ve {
     string gioChieu;
     string phongChieu;
     string danhSachGhe; 
-    int soLuongGhe;
-    int tongTien;
+    int soLuongGhe=0;
+    int tongTien=0;
     string thoiGianDat;
 };
 
@@ -81,11 +81,14 @@ extern bool daDangNhap;
 //hàm xử lý nhân viên
 bool loginNhanVien();
 void dangXuat();
+string taoMaNVTuDong(int soLuongNV);
 string nhapMatKhauAn();
 string layThoiGianHienTai();
 string chuyenViTriThanhMa(int viTri);
 void luuLichSuDangNhap();
 void xemLichSuDangNhap();
+void luuNhanVien();
+void docNhanVien();
 
 void themNhanVien(NhanVien dsNV[], int& soLuongNV);
 void xoaNhanVien(NhanVien dsNV[], int& soLuongNV);
@@ -97,13 +100,14 @@ void themPhim(Phim dsPhim[], int& soLuongPhim);
 void xoaPhim(Phim dsPhim[], int& soLuongPhim);
 void hienThiPhim(Phim dsPhim[], int soLuongPhim);
 void timKiemPhim(Phim dsPhim[], int soLuongPhim);
+string taoMaPhimTuDong(int soLuongPhim);
 
 //hàm xử lý suất chiếu (chỉ quản lý mới dùng được)
 void themSuatChieu(SuatChieu dsSuat[], int& soLuongSuat, Phim dsPhim[], int soLuongPhim);
-bool kiemTraTrungSuat(SuatChieu dsSuat[], int soLuongSuat, string ngay, string gio, string phong);
 void xoaSuatChieu(SuatChieu dsSuat[], int& soLuongSuat);
 void hienThiSuatChieu(SuatChieu dsSuat[], int soLuongSuat);
 void timKiemSuatChieu(SuatChieu dsSuat[], int soLuongSuat);
+string taoMaSuatTuDong(int soLuongSuat);
 
 //hàm xử lý đặt vé
 void datVe(SuatChieu dsSuat[], int soLuongSuat, Ve dsVe[], int& soLuongVe);

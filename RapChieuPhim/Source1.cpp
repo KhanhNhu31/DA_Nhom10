@@ -80,6 +80,7 @@ void hienThiChuongTrinh() {
 }
 
 int main() {
+    docNhanVien();
     //HIỆN BẢNG ĐĂNG NHẬP NGAY KHI VÀO CHƯƠNG TRÌNH
     cout << "\n";
     cout << "==========================================\n";
