@@ -145,7 +145,7 @@ bool loginNhanVien() {
 			cout << "Chao mung: " << nguoiDangNhap.hoTen << endl;
 			cout << "Quyen: " << chuyenViTriThanhMa(nguoiDangNhap.viTri) << endl;
 			cout << "Thoi gian: " << layThoiGianHienTai() << endl;
-			cout << "================================\n";
+			cout << "===============================\n";
 			return true;
 		}
 	}
@@ -264,7 +264,7 @@ void xoaNhanVien(NhanVien dsNV[], int& soLuongNV) {
 	cout << "\nKhong tim thay nhan vien co ma: " << maXoa << endl;
 }
 
-
+//hàm xem lịch sử đăng nhập
 void xemLichSuDangNhap() {
 	if (!kiemTraQuyen(1)) {
 		return;
@@ -299,12 +299,11 @@ void luuNhanVien() {
 	file << soLuongNV << endl;  //lưu số lượng
 
 	for (int i = 0; i < soLuongNV; i++) {
-		file << "MaNV: " << danhSachNV[i].maNV << endl;
-		file << "HoTen: " << danhSachNV[i].hoTen << endl;
-		file << "SoDT: " << danhSachNV[i].soDT << endl;
-		file << "ViTri: " << danhSachNV[i].viTri << endl;
-		file << "MatKhau: " << danhSachNV[i].matKhau << endl;
-		file << "-----------------------------\n";
+		file << danhSachNV[i].maNV << endl; 
+		file << danhSachNV[i].hoTen << endl; 
+		file << danhSachNV[i].soDT << endl; 
+		file << danhSachNV[i].viTri << endl; 
+		file << danhSachNV[i].matKhau << endl;
 	}
 	file.close();
 }
@@ -660,32 +659,23 @@ void themSuatChieu(SuatChieu dsSuat[], int& soLuongSuat, Phim dsPhim[], int soLu
 	cout << "Nhap phong chieu (VD: P1, P2): ";
 	getline(cin, suat.phongChieu);
 
-	//kiểm tra trùng suất chiếu
-	/*if (kiemTraTrungSuat(dsSuat, soLuongSuat, suat.ngayChieu, suat.gioChieu, suat.phongChieu)) {
-		cout << "\n*** CANH BAO: DA CO SUAT CHIEU TRUNG! ***\n";
-		cout << "Ngay: " << suat.ngayChieu << " - Gio: " << suat.gioChieu << endl;
-		cout << "Phong: " << suat.phongChieu << endl;
-		cout << "Ban co muon tiep tuc? (y/n): ";
-		char xacNhan;
-		cin >> xacNhan;
-		if (xacNhan != 'y' && xacNhan != 'Y') {
-			cout << "\nHuy them suat chieu.\n";
-			return;
-		}
-	}*/
-
 	cout << "Nhap so ghe trong: ";
 	cin >> suat.soGheTrong;
+	if (suat.soGheTrong > SO_HANG * SO_COT) 
+	{ 
+		cout << "\nSo ghe vuot qua so luong ghe cua phong! Chi co toi da " << SO_HANG * SO_COT << " ghe\n"; 
+		return; 
+	}
 
 	dsSuat[soLuongSuat] = suat;
 	soLuongSuat++;
 
-	cout << "\n===== THEM SUAT CHIEU THANH CONG! =====\n";
+	cout << "\n=====THEM SUAT CHIEU THANH CONG!=====\n";
 	cout << "Ma da tao: " << suat.maSuat << endl;
 	cout << "Phim: " << suat.tenPhim << endl;
 	cout << "Thoi gian: " << suat.ngayChieu << " - " << suat.gioChieu << endl;
 	cout << "Phong: " << suat.phongChieu << endl;
-	cout << "========================================\n";
+	cout << "=======================================\n";
 }
 
 //kiểm tra trùng suất chiêu
@@ -786,7 +776,8 @@ void timKiemSuatChieu(SuatChieu dsSuat[], int soLuongSuat) {
 		string maTim;
 		cout << "Nhap ma suat chieu can tim: ";
 		getline(cin, maTim);
-
+		
+		bool timThay = false;
 		for (int i = 0; i < soLuongSuat; i++) {
 			if (dsSuat[i].maSuat == maTim) {
 				cout << "\n-----THONG TIN SUAT CHIEU-----\n";
@@ -796,10 +787,13 @@ void timKiemSuatChieu(SuatChieu dsSuat[], int soLuongSuat) {
 				cout << "Gio chieu: " << dsSuat[i].gioChieu << endl;
 				cout << "Phong chieu: " << dsSuat[i].phongChieu << endl;
 				cout << "So ghe trong: " << dsSuat[i].soGheTrong << endl;
-				return;
+				timThay = true;
+				break;
 			}
 		}
-		cout << "\nKhong tim thay suat chieu!\n";
+		if (!timThay) {
+			cout << "\nKhong tim thay suat chieu!\n";
+		}
 
 	}
 	else if (luaChon == 2) {

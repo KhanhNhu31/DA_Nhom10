@@ -25,7 +25,7 @@ void hienThiChuongTrinh() {
             cout << "4. Dat ve\n";
         }
         cout << "0. Dang xuat\n";
-        cout << "================================\n";
+        cout << "===============================\n";
         cout << "Nhap lua chon: ";
         cin >> chon;
 

@@ -1,7 +1,16 @@
+3
+admin
+Quan tri vien
+0123456789
 1
-MaNV: admin
-HoTen: Quan tri vien
-SoDT: 0123456789
-ViTri: 1
-MatKhau: 3110
------------------------------
+3110
+NV002
+Khanh Nhu
+0908837534
+2
+111
+NV003
+Khanh Nhi
+0764940576
+1
+222
